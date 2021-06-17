@@ -16,9 +16,17 @@ Build
 -----
 
 From the project root directory tun
-```mkdir build && cd build```
-```cmake ..```
-```make```
+```
+mkdir build && cd build
+```
+
+```
+cmake ..
+```
+
+```
+make
+```
 
 Run the example
 ---------------
