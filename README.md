@@ -25,3 +25,11 @@ Run the example
 The demo executable is created in the `build` directory. launch with
 
 ```./build/foo_demo```
+
+Tests
+-----
+The project includes unit tests (*Boost.Tests*).
+
+The tests are organized within the `test` directory.
+
+The tests are also built with CMake using a dedicated `CMakeLists.txt` to keep the workspace well organised. The executable is built in `build/test/foo_tests`.

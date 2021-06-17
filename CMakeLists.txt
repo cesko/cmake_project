@@ -13,3 +13,6 @@ add_library(foo STATIC src/Foo.cpp)
 # Build Demo
 add_executable(foo_demo src/main.cpp)
 target_link_libraries(foo_demo foo)
+
+# Unit Tests
+add_subdirectory(test)
