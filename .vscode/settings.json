@@ -1,0 +1,3 @@
+{
+    "boost-test-adapter.testExecutable": "build/test/foo_tests"
+}
