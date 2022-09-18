@@ -5,85 +5,41 @@
 #include <cmath>
 #include <cstring>
 
-#include <boost/test/unit_test.hpp>
+#include <catch2/catch_test_macros.hpp>
+
 #include "Foo.hpp"
 
+TEST_CASE( "Add Test", "[Foo::add]" ) {
+    REQUIRE( foo::add(1,1) == 2  );
+    REQUIRE( foo::add(1001,2002) == 3003 );
+    REQUIRE( foo::add(10,-10) == 0 );
+    REQUIRE( foo::add(0.95,0.05) == 1.0 );
+}
 
+TEST_CASE( "Some examplary tests", "[Example]" ) {
+    // some setup stuff
+    const char* text = "some text";
 
-BOOST_AUTO_TEST_SUITE(foo_add_suite)
+    SECTION( "A section" ) {
+        REQUIRE(true);
+        
+    }
+    SECTION("Another section") {
+        REQUIRE(1 == 1);
 
-    BOOST_AUTO_TEST_CASE(test_simple)
-    {
-        BOOST_CHECK_EQUAL(foo::add(0,0), 0);
-        BOOST_CHECK_EQUAL(foo::add(0,1), 1);
-        BOOST_CHECK_EQUAL(foo::add(1,2), 3);
-        BOOST_CHECK_EQUAL(foo::add(5,0), foo::add(0,5));
+        SECTION("A subsection") {
+            REQUIRE_FALSE(false);
+        }
+
+        SECTION("Another subsection") {
+            SECTION("Level 3 subsection") {
+                REQUIRE(true);
+            }
+        }
     }
 
-    BOOST_AUTO_TEST_CASE(test_large_numbers)
-    {
-        BOOST_CHECK_EQUAL(foo::add(1000001,2000002), 3000003);
+    SECTION("A test that fails") {
+        REQUIRE(false);
     }
 
-    BOOST_AUTO_TEST_CASE(test_negative)
-    {
-        BOOST_CHECK_EQUAL(foo::add(1,-1), 0);
-        BOOST_CHECK_EQUAL(foo::add(-6,-4), -10);
-        BOOST_CHECK_EQUAL(foo::add(-99,9), -90);
-    }
-
-    BOOST_AUTO_TEST_CASE(test_decimal)
-    {
-        BOOST_CHECK_EQUAL(foo::add(0.2,0.5), 0.7);
-        BOOST_CHECK_EQUAL(foo::add(10,-0.01), 9.99);
-        BOOST_CHECK_EQUAL(foo::add(.5,99.5), 100.0);
-    }
-
-    BOOST_AUTO_TEST_CASE(test_nan)
-    {
-        BOOST_CHECK( std::isnan(foo::add(std::nan(""),std::nan(""))) );
-        BOOST_CHECK( std::isnan(foo::add(std::nan(""),-std::nan(""))) );
-        BOOST_CHECK( std::isnan(foo::add(std::nan(""),1)) );
-        BOOST_CHECK( std::isnan(foo::add(1,-std::nan(""))) );        
-    }
-
-BOOST_AUTO_TEST_SUITE_END()
-
-
-BOOST_AUTO_TEST_SUITE(foo_reverse_suite)
-
-    BOOST_AUTO_TEST_CASE(test_empty)
-    {
-        BOOST_CHECK( std::strcmp( foo::reverse(""), "" ) == 0 );
-    }
-
-    BOOST_AUTO_TEST_CASE(test_trivial)
-    {
-        BOOST_CHECK( std::strcmp( foo::reverse("a"), "a" ) == 0 );
-    }
-
-    BOOST_AUTO_TEST_CASE(test_word)
-    {
-        BOOST_CHECK( std::strcmp( foo::reverse("hello"), "olleh" ) == 0 );
-    }
-
-    BOOST_AUTO_TEST_CASE(test_sentence)
-    {
-        BOOST_CHECK( std::strcmp( foo::reverse("Hello, beautiful world!"), "!dlrow lufituaeb ,olleH" ) == 0 );
-    }
-
-BOOST_AUTO_TEST_SUITE_END()
-
-// BOOST_AUTO_TEST_SUITE(these_tests_will_fail)
-
-//     BOOST_AUTO_TEST_CASE(test_to_fail)
-//     {
-//         BOOST_CHECK( false );
-//     }
-
-//     BOOST_AUTO_TEST_CASE(test_to_fail2)
-//     {
-//         BOOST_CHECK_EQUAL( 1, 0 );
-//     }
-
-// BOOST_AUTO_TEST_SUITE_END()
+}

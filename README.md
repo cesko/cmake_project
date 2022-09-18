@@ -3,14 +3,18 @@ cmake_project
 
 Template for CMake C++ Project
 
+**Branch Info:** Examine *Check2* instead of *Boost* for unit testing.
+
 **Author:** Christian Koch
+
 
 Dependencies
 ------------
 
 The project was built and tested on Ubuntu 20.04 LTS with the following dependencies:
  - CMake 3.16.3
- - Boost 1.71 ( For Tests )
+ - _Boost 1.71 ( For Tests )_
+ 
 
 Build
 -----
