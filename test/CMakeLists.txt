@@ -1,14 +1,23 @@
-# Unit Test Dependencies
-# find_package(Catch2 3 REQUIRED)
-# add_subdirectory(${CMAKE_SOURCE_DIR}/lib/Catch2 ${CMAKE_BINARY_DIR}/lib/Catch2)
-# include_directories(
-#     ../lib/Catch2/src
-# )
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
 
-set(TEST_SRC_FILES test_main.cpp test_foo.cpp)
+enable_testing()
 
-add_executable(tests test_foo.cpp)
-target_link_libraries(tests PRIVATE Catch2::Catch2WithMain foo)
+add_executable(
+  tests
+  test_hello.cpp
+  test_foo.cpp
+)
+target_link_libraries(
+  tests
+  GTest::gtest_main
+)
 
-# enable_testing()
-# add_test(Tests tests)
+include(GoogleTest)
+gtest_discover_tests(tests)

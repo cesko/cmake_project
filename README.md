@@ -3,7 +3,7 @@ cmake_project
 
 Template for CMake C++ Project
 
-**Branch Info:** Examine *Check2* instead of *Boost* for unit testing.
+**Branch Info:** *GoogleTest* as default unit testing framework.
 
 **Author:** Christian Koch
 
@@ -13,7 +13,7 @@ Dependencies
 
 The project was built and tested on Ubuntu 20.04 LTS with the following dependencies:
  - CMake 3.16.3
- - Check2 (as submodule)
+ - GoogleTest (via Cmake FetchContent)
  
 
 Build from source
@@ -46,7 +46,7 @@ The demo executable is created in the `build` directory. launch with
 
 Tests
 -----
-The project includes unit tests (*Check2*).
+The project includes unit tests (*GoogleTest*).
 
 The tests are organized within the `test` directory.
 
@@ -62,9 +62,7 @@ The experience of VS code is highly customizable. Consider the following extensi
  - C/C++ Themes
  - CMake
  - CMake Tools
- - Test Explorer UI
  - C++ TestMate
- - CMake Test Explorer
 
 ### Configuration
 The VS Code configuration files for this project are located in the directory `.vscode`. You may need to adapt these files to your own project.
@@ -73,12 +71,10 @@ The VS Code configuration files for this project are located in the directory `.
 
 VS Code can provide a UI for unit tests using the *Test Explorer UI* extension. It provides a *Testing*-tab giving an overview about your test-cases and their status, as allows running and even debugging all or single tests. It can be used with different testing frameworks, however, in this example, Check2 are used. 
 
-Compared to *Boost.Tests*, Check2 appears much better supported in VS Code through extension. *However there is an alternative branch using Boost*.
+The default unit testing framework is *GoogleTest*, primarily as it is used with ROS2. There also seems to be good support in VS Code. *However there are alternative branches using Boost and Catch2*.
 
 You will need the following extensions:
- - Test Explorer UI
  - C++ TestMate
- - CMake Test Explorer (maybe)
 
 In order wo work correctly, the extension must be correctly cofnigured: In `.vscode/settings.json` set the parameter
 ```
